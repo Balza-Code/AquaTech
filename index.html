@@ -9,8 +9,22 @@
   <body>
     <header class="header">
       <span class="logo">AquaTech</span>
-      <nav class="nav">
-        <ul class="nav__list">
+      <nav class="nav" id="nav">
+        <button class="nav__toggle" aria-label="toggle navigation" id="nav-toggle">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              fill="currentColor"
+              d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+            ></path>
+          </svg>
+          </button>
+        <ul class="nav__list" id="nav-list">
           <li class="nav__item"><a href="#" class="nav__link">Home</a></li>
           <li class="nav__item"><a href="#" class="nav__link">About</a></li>
           <li class="nav__item">
@@ -121,4 +135,5 @@
       </p>
     </footer>
   </body>
+  <script src="./index.js"></script>
 </html>

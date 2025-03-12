@@ -96,10 +96,12 @@ a {
   width: 100%;
   border: 1px solid #032f75c7;
   z-index: 10;
-  padding: 0.7rem 10%;
+  padding: 1rem 10%;
   color: #fff;
   backdrop-filter: blur(10px);
 }
+
+/*  */
 
 .logo {
   font-size: 2rem;
@@ -114,6 +116,12 @@ a {
   gap: 1rem;
 }
 
+@media (max-width: 768px) {
+  .nav {
+    /* display: none; */
+  }
+}
+
 .nav__list {
   display: flex;
   align-items: center;
@@ -124,6 +132,64 @@ a {
 .nav__item {
   font-size: 1.4rem;
   font-weight: 600;
+}
+
+.nav__toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav__toggle {
+    display: block;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  .nav__list {
+    transition: transform 0.5s ease;
+    transform: translateY(-200%);
+    position: fixed;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #032f75c7;
+    flex-direction: column;
+    gap: 5rem;
+    padding: 2rem;
+    margin: 0;
+    z-index: -10;
+    animation: fadeOut 0.5s ease;
+  }
+
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    50%{
+      opacity: .3;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .nav__open {
+    transform: translateY(0);
+    transition: transform 0.5s ease;
+    position: fixed;
+    top: 100%;
+    left: 0;
+    animation: fadeIn 0.5s ease;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    
+    100% {
+      opacity: 1;
+    }
+  }
 }
 
 /* hero */
@@ -146,8 +212,14 @@ a {
   font-weight: 700;
   margin-bottom: 1rem;
 }
-.linear-gradient-text{
-  background-image: linear-gradient(90deg, #def4ff 0%, #00bffa 50%, #00bffa 90%, #def4ff 100%);
+.linear-gradient-text {
+  background-image: linear-gradient(
+    90deg,
+    #def4ff 0%,
+    #00bffa 50%,
+    #00bffa 90%,
+    #def4ff 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
@@ -250,6 +322,9 @@ a {
 .step--2,
 .step--3 {
   position: absolute;
+  border: 1px solid #0440a1;
+  padding: 1rem;
+  border-radius: 2rem;
 }
 
 .how__steps span {
@@ -273,6 +348,23 @@ a {
   left: 5%;
 }
 
+@media (max-width: 768px) {
+  .step--1 {
+    top: 10%;
+    left: 50%;
+  }
+
+  .step--2 {
+    top: 50%;
+    right: 50%;
+  }
+
+  .step--3 {
+    bottom: 10%;
+    left: 50%;
+  }
+}
+
 /* testimony */
 .testimony {
   margin: 10rem 0;
@@ -281,7 +373,7 @@ a {
 
 .testimony__cards {
   display: grid;
-  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
   margin: 5rem 0;
 }
@@ -291,7 +383,7 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  
+
   height: 350px;
   background-color: #0098d4;
   text-align: center;
